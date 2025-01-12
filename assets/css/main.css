@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    background: #1e2538 url("/bg.png") no-repeat center center fixed;
+    background-size: cover;
+}
+
+@media (max-width: 480px) {
+    body {
+        background: #1e2538 url("/bg_mobile.png") no-repeat top center fixed;
+        background-size: contain;
+    }
+}
+
+@layer utilities {
+    .bg-custom-gradient {
+        background: linear-gradient(
+            218deg,
+            #532cd7 6.15%,
+            #e32a47 58.57%,
+            #ef7230 93.47%
+        );
+    }
+}
