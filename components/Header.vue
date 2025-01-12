@@ -15,13 +15,13 @@ const emit = defineEmits([
             <img
                 src="/menu_sm.svg"
                 alt=""
-                class="cursor-pointer"
+                class="w-9 h-9"
                 @click="emit('openMenuBurger')"
             />
             <img
                 src="/search_sm.svg"
                 alt=""
-                class="cursor-pointer"
+                class="w-9 h-9"
                 @click="emit('openSearchModalMobile')"
             />
         </div>
@@ -72,7 +72,7 @@ const emit = defineEmits([
                 @click="emit('openSearchModal')"
             />
             <button
-                class="py-3.5 bg-blue-700 text-white rounded-xl px-8 shadow-lg shadow-blue-800 max-sm:py-2 max-sm:px-3.5 max-sm:text-xs max-sm:rounded-lg"
+                class="py-3.5 bg-blue-700 text-white rounded-xl px-8 shadow-lg shadow-blue-800 max-sm:py-2.5 max-sm:px-4 max-sm:text-xs max-sm:rounded-lg"
                 @click="emit('openLoginModal')"
             >
                 Войти
