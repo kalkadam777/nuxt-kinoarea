@@ -25,10 +25,17 @@ onMounted(async () => {
             ...movie,
         }));
 
-        for (const movie of movies.value) {
-            const movieTrailers = await getTrailers(movie.id);
-            trailers.value.push(...movieTrailers);
-        }
+        const trailerPromises = movies.value.map((movie) =>
+            getTrailers(movie.id)
+        );
+
+        const trailersArray = await Promise.all(trailerPromises);
+        trailers.value = trailersArray.flat();
+
+        // for (const movie of movies.value) {
+        //     const movieTrailers = await getTrailers(movie.id);
+        //     trailers.value.push(...movieTrailers);
+        // }
 
         const randomIndex = Math.floor(Math.random() * trailers.value.length);
         randomTrailerKey.value = trailers.value[randomIndex];
@@ -86,6 +93,7 @@ const handleScroll = (event) => {
             <iframe
                 class="absolute top-0 left-0 w-full h-full rounded-lg"
                 :src="`https://www.youtube.com/embed/${randomTrailerKey.key}`"
+                loading="lazy"
                 frameborder="0"
                 allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                 allowfullscreen
@@ -144,13 +152,14 @@ const handleScroll = (event) => {
             style="scroll-snap-type: x mandatory"
         >
             <div
-                v-for="trailer in trailers"
+                v-for="trailer in trailers.slice(0, 10)"
                 :key="trailer.id"
                 class="inline-block w-1/4 flex-shrink-0 max-sm:w-[235px]"
                 style="scroll-snap-align: start"
             >
                 <iframe
                     :src="`https://www.youtube.com/embed/${trailer.key}`"
+                    loading="lazy"
                     frameborder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowfullscreen

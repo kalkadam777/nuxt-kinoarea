@@ -60,6 +60,7 @@ defineExpose({
             class="flex flex-col gap-3 w-full mt-8"
             v-if="
                 searchPerformed &&
+                !searchStore.loader &&
                 searchStore.movies.length === 0 &&
                 searchStore.people.length === 0
             "

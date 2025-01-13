@@ -38,21 +38,27 @@ onMounted(async () => {
 </script>
 
 <template>
-    <div class="mt-16 min-h-screen px-12">
-        <h2 class="text-5xl font-bold text-white mb-4">
-            График премьер фильмов
-        </h2>
-        <div class="flex items-center gap-2 mb-6">
-            <NuxtLink to="/"
-                ><span class="text-[#4F5B7C]">Главная</span></NuxtLink
+    <div class="mt-16 min-h-screen">
+        <div class="flex flex-col max-sm:items-center">
+            <h2
+                class="text-5xl font-bold text-white mb-4 max-sm:text-3xl max-sm:text-center"
             >
-            <img src="/arrow3.svg" alt="Arrow Icon" />
-            <span class="text-white">Афиша</span>
+                График премьер фильмов
+            </h2>
+            <div class="flex items-center gap-2 mb-6">
+                <NuxtLink to="/"
+                    ><span class="text-[#4F5B7C]">Главная</span></NuxtLink
+                >
+                <img src="/arrow3.svg" alt="Arrow Icon" />
+                <span class="text-white">Афиша</span>
+            </div>
+            <p
+                class="text-white max-w-3xl mb-8 max-sm:w-[348px] max-sm:text-center"
+            >
+                Узнайте даты премьер самых популярных фильмов 2025 года! График
+                обновляется автоматически.
+            </p>
         </div>
-        <p class="text-white max-w-3xl mb-8">
-            Узнайте даты премьер самых популярных фильмов 2025 года! График
-            обновляется автоматически.
-        </p>
 
         <div>
             <div
@@ -61,7 +67,7 @@ onMounted(async () => {
                 class="mb-8"
             >
                 <h3 class="text-2xl font-bold text-white mb-4">{{ date }}</h3>
-                <div class="grid grid-cols-4 gap-4">
+                <div class="grid grid-cols-4 gap-4 max-sm:grid-cols-2">
                     <MovieCard
                         v-for="movie in movies"
                         :id="movie.id"
